@@ -1,101 +1,184 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import numpy as np # Import numpy for bar positioning
+import matplotlib as mpl # Import matplotlib for rcParams
+import matplotlib.font_manager as fm # Import font_manager
+import shutil # For removing cache directory
 
-def visualize_evaluation_csv(csv_file_path, output_image_path):
+# --- List Available Fonts (for debugging) ---
+print("--- Matplotlib Font List ---")
+try:
+    # Get a list of font family names known to Matplotlib
+    font_families = sorted(set(f.name for f in fm.fontManager.ttflist))
+    print("Available font families:")
+    for family in font_families:
+        print(f"  - {family}")
+    # Specifically check for Nanum variants
+    nanum_found = [f for f in font_families if 'Nanum' in f]
+    if nanum_found:
+        print("\nFound Nanum variants:", nanum_found)
+    else:
+        print("\nNo Nanum variants found in Matplotlib's list.")
+except Exception as e:
+    print(f"Error listing fonts: {e}")
+print("--- End Font List ---\n")
+# --- End Debugging ---
+
+# --- Rebuild Font Cache (if necessary) ---
+try:
+    # Check if NanumGothic is already known
+    fm.findfont("NanumGothic", fallback_to_default=False)
+except ValueError:
+    print("NanumGothic not found in current cache. Rebuilding font cache...")
+    # Get cache directory
+    cache_dir = mpl.get_cachedir()
+    # Remove the existing cache directory if it exists
+    if os.path.exists(cache_dir):
+        shutil.rmtree(cache_dir)
+        print(f"Removed font cache directory: {cache_dir}")
+    # Matplotlib should rebuild automatically on next findfont/font load
+    # Or explicitly trigger rebuild (can sometimes be slow)
+    # fm._rebuild()
+    print("Font cache will be rebuilt on first plot attempt.")
+# --- End Cache Rebuild ---
+
+# --- Font Configuration for Korean Characters ---
+try:
+    # Try common Korean fonts
+    # You might need to install them: sudo apt-get install fonts-nanum*
+    mpl.rcParams['font.family'] = 'NanumGothic'
+    mpl.rcParams['axes.unicode_minus'] = False # Ensure minus signs render correctly
+    print("Successfully set font to NanumGothic.") # Confirmation
+except Exception as e:
+    print(f"Warning: Could not set 'NanumGothic' font ({e}). Korean characters might not display correctly.")
+    print("Consider installing a Korean font like NanumGothic: sudo apt-get install fonts-nanum* (Debian/Ubuntu)")
+    # Fallback to a generic sans-serif, which might or might not work depending on system config
+    try:
+        mpl.rcParams['font.family'] = 'sans-serif'
+        mpl.rcParams['axes.unicode_minus'] = False
+    except Exception as fallback_e:
+         print(f"Could not set fallback font: {fallback_e}")
+# --- End Font Configuration ---
+
+def visualize_comparison(csv_files, output_image_path):
     """
-    Reads evaluation data from a CSV file and generates a bar chart
-    comparing the total scores of different reports.
+    Reads evaluation data from multiple CSV files, combines them,
+    and generates a grouped bar chart comparing the total scores
+    assigned by different evaluators.
 
     Args:
-        csv_file_path (str): Path to the input CSV file.
+        csv_files (list): A list of paths to the input CSV files.
         output_image_path (str): Path to save the output bar chart image.
     """
-    try:
-        # Read the CSV file into a pandas DataFrame
-        df = pd.read_csv(csv_file_path)
+    all_dfs = []
+    evaluator_names = []
 
-        # --- Data Preparation ---
-        # Ensure the score column is numeric
-        score_column = 'Total Score (Weighted, Max 5.0)'
-        if score_column not in df.columns:
-            # Try finding a similar column name robustly
-            potential_cols = [col for col in df.columns if 'Total Score' in col and 'Max 5.0' in col]
-            if not potential_cols:
-                 print(f"Error: Could not find the score column '{score_column}' or similar in {csv_file_path}")
-                 return
-            score_column = potential_cols[0] # Use the first match
-            print(f"Warning: Using score column '{score_column}'")
+    report_col_name = '보고서'
+    score_col_name = '총점'
 
+    for csv_file_path in csv_files:
+        try:
+            # Read the CSV file
+            df = pd.read_csv(csv_file_path)
 
-        df[score_column] = pd.to_numeric(df[score_column], errors='coerce')
-        # Drop rows where score conversion failed (if any)
-        df.dropna(subset=[score_column], inplace=True)
+            # --- Data Validation ---
+            if report_col_name not in df.columns:
+                print(f"Error: Report column '{report_col_name}' not found in {csv_file_path}")
+                continue # Skip this file
+            if score_col_name not in df.columns:
+                print(f"Error: Score column '{score_col_name}' not found in {csv_file_path}")
+                continue # Skip this file
 
-        # Create shorter labels for the plot from the file path
-        def create_short_label(path):
+            # --- Data Preparation ---
+            # Extract evaluator name from filename (e.g., "claude_results.csv" -> "Claude")
             try:
-                basename = os.path.basename(path)
-                model_part = os.path.splitext(basename)[0]
-                # Attempt to determine if augmented
-                is_augmented = "augmented" in path
-                status = "(Aug)" if is_augmented else "(Orig)"
-                # Basic name formatting (can be improved)
-                label = model_part.replace('_', ' ').replace('-', ' ').title()
-                return f"{label} {status}"
-            except:
-                return path # Fallback to full path if error
+                evaluator = os.path.splitext(os.path.basename(csv_file_path))[0].split('_')[0].title()
+            except IndexError:
+                evaluator = f"Evaluator_{len(evaluator_names) + 1}" # Fallback name
+                print(f"Warning: Could not determine evaluator name from {csv_file_path}. Using '{evaluator}'.")
+            evaluator_names.append(evaluator)
 
-        df['Short Label'] = df['Report File Path'].apply(create_short_label)
+            # Ensure the score column is numeric
+            df[score_col_name] = pd.to_numeric(df[score_col_name], errors='coerce')
+            df.dropna(subset=[score_col_name], inplace=True) # Drop rows where score conversion failed
 
-        # Sort by score for better visualization (optional)
-        df.sort_values(by=score_column, ascending=False, inplace=True)
+            # Rename columns for consistency
+            df.rename(columns={report_col_name: 'Report', score_col_name: 'Score'}, inplace=True)
+
+            # Add evaluator column
+            df['Evaluator'] = evaluator
+
+            # Keep only necessary columns
+            all_dfs.append(df[['Report', 'Score', 'Evaluator']])
+
+        except FileNotFoundError:
+            print(f"Error: CSV file not found at {csv_file_path}")
+        except pd.errors.EmptyDataError:
+            print(f"Error: CSV file is empty at {csv_file_path}")
+        except Exception as e:
+            print(f"An error occurred processing {csv_file_path}: {e}")
+
+    if not all_dfs:
+        print("Error: No valid data loaded from any CSV file. Cannot generate chart.")
+        return
+
+    # --- Combine and Pivot Data ---
+    try:
+        combined_df = pd.concat(all_dfs, ignore_index=True)
+        pivoted_df = combined_df.pivot(index='Report', columns='Evaluator', values='Score')
+
+        # Sort by the average score across evaluators (optional, for consistent ordering)
+        pivoted_df['Mean_Score'] = pivoted_df.mean(axis=1)
+        pivoted_df.sort_values(by='Mean_Score', ascending=False, inplace=True)
+        pivoted_df.drop(columns=['Mean_Score'], inplace=True)
 
         # --- Plotting ---
-        plt.style.use('ggplot') # Use a visually appealing style
-        fig, ax = plt.subplots(figsize=(12, 7)) # Adjust figure size as needed
-
-        # Create the bar chart
-        bars = ax.bar(df['Short Label'], df[score_column], color=plt.cm.viridis(df[score_column] / 5.0)) # Color by score
+        plt.style.use('ggplot')
+        ax = pivoted_df.plot(kind='bar', figsize=(18, 9), width=0.8) # Adjust figsize and width
 
         # Add labels and title
-        ax.set_ylabel('Total Score (Weighted, Max 5.0)', fontsize=12)
+        ax.set_ylabel('Total Score (Max 5.0)', fontsize=12) # Assuming max score is 5 based on context
         ax.set_xlabel('Report (Model & Status)', fontsize=12)
-        ax.set_title('Simulated Evaluation Scores of Tariff Reports', fontsize=16, fontweight='bold')
+        ax.set_title('Comparison of Evaluation Scores by Evaluator', fontsize=16, fontweight='bold')
 
         # Rotate x-axis labels for better readability
-        plt.xticks(rotation=45, ha='right', fontsize=10) # Adjust rotation and alignment
+        plt.xticks(rotation=45, ha='right', fontsize=10)
 
         # Add score values on top of bars
-        for bar in bars:
-            yval = bar.get_height()
-            plt.text(bar.get_x() + bar.get_width()/2.0, yval + 0.05, f'{yval:.1f}', va='bottom', ha='center', fontsize=9) # Adjust vertical offset
+        for container in ax.containers:
+            ax.bar_label(container, fmt='%.1f', label_type='edge', fontsize=8, padding=3)
 
         # Add a grid for the y-axis
         ax.yaxis.grid(True, linestyle='--', alpha=0.7)
-        ax.set_ylim(0, 5.5) # Set y-axis limits slightly above max score
+        ax.set_ylim(0, max(5.5, pivoted_df.max().max() * 1.1)) # Set y-axis limits dynamically
 
-        # Adjust layout to prevent labels from being cut off
+        # Add legend
+        ax.legend(title='Evaluator')
+
+        # Adjust layout
         plt.tight_layout()
 
-        # Save the plot to a file
-        plt.savefig(output_image_path, dpi=300) # Save with high resolution
-        print(f"Chart saved successfully to {output_image_path}")
+        # Save the plot
+        plt.savefig(output_image_path, dpi=300)
+        print(f"Comparison chart saved successfully to {output_image_path}")
 
         # Display the plot
         plt.show()
 
-    except FileNotFoundError:
-        print(f"Error: CSV file not found at {csv_file_path}")
-    except pd.errors.EmptyDataError:
-         print(f"Error: CSV file is empty at {csv_file_path}")
     except KeyError as e:
-        print(f"Error: Column not found in CSV - {e}. Please check the CSV headers.")
+        print(f"Error during pivoting or plotting: Missing key {e}. Check if reports are consistent across files.")
     except Exception as e:
-        print(f"An error occurred during visualization: {e}")
+        print(f"An error occurred during chart generation: {e}")
 
 # --- Script Execution ---
-csv_input_file = 'evaluation_results.csv'
-output_chart_file = 'evaluation_scores_chart.png'
+# List of CSV files to compare
+csv_input_files = [
+    'demo/eval/claude_results.csv',
+    'demo/eval/gemini_results.csv'
+]
+# Output file path
+output_chart_file = 'evaluation_comparison_chart.png'
 
-visualize_evaluation_csv(csv_input_file, output_chart_file)
+# Generate the comparison chart
+visualize_comparison(csv_input_files, output_chart_file)

@@ -29,6 +29,7 @@ headingDivider: 2
 ## Basic - Deep Research (2)
 
 - "Trump 정부 관세 정책의 Global 경제 영향 심층 분석"에 대한 결과
+  > Gemini-2.5 Pro / Grok /</br>o3-mini / Perplexity
 
 ![bg right fit](https://mermaid.ink/img/pako:eNpVj01ugzAQha9izdogAzY_XnTTqhfoolJDFTnxFKwARo6RoFHuXgNt1c7Kb-abN343OFuNIGFezq1yPjqhV_VAQnnjOyQ1vFqnyaOdBk9OC3k2HdawE3OkZnMlhwZ7M5hjehRxrylpnL0cNeKI7r_elM2ilY5a07RbI2Bjh7PxS5Dvu_OyO_89XgNhJIoeSMUY26mTcuRQiqqkpEpTSrjIKUlZVlCScM7fgUKPrldGh4C3dacG32IfAsjw1Mpd1ij3wKnJ25dlOIP0bkIKzk5NC_JDddegplErj09GNU71v93GrcbfPA4a3fZRkElGYVTDm7X9zzxIkDeYw1CUcZakPBcsz1mVsJLCApKXMc8KXpSMZaLKi-pO4XMzYHFZiJCZpTkrCpaK5P4FD-SFDA?type=png)
 
@@ -37,6 +38,11 @@ headingDivider: 2
 - Audio Learner를 위한 선택지
 - Google의 NotebookLM (무료)
   > 관심 주제 Deep Research > NotebookLM > 출퇴근 Podcast
+
+<audio controls>
+  <source src="./res/nb_lm.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 ![bg left fit](./res/np_lm.gif)
 
@@ -97,7 +103,7 @@ p {
 
 - Feel the `Vibe`
 
-![bg right fit](./res/cursor_work_1x.gif)
+![bg right fit](./res/cursor_vibe_1x_noskip.gif)
 
 ## Cursor Demo</br>- 보고서 평가 (4)
 
@@ -108,7 +114,7 @@ p {
 
 ## Cursor Demo</br>- 보고서 평가 (5)
 
-> 결과 확인
+> 총 10개 DeepSearch 자료에 대한 주요한 Insight를 10분내 추출, 시각화
 
 ![bg right fit](./res/eval_result.png)
 
@@ -120,8 +126,8 @@ p {
 
   > 나는 못해. 개발자들이나 하는거야..
 
-- 창의성과 탐색의 노력
-  > AI 툴 활용 가능성 ∞
+- 창의적 게으름
+  > 새로운 AI 적용 가능성을 발견
 
 ### 한계
 
