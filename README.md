@@ -21,7 +21,7 @@ headingDivider: 2
 
 ## Basic - Deep Research (1)
 
-- Web 검색을 활용 정보의 Retrieval과 자율적 계획과 추론에 따라 주제에 대한 검색을 수행
+- Web 검색을 활용 정보의 Retrieval과 자율적 계획과 추론에 따라 주제에 대한 연구를 수행
 - Grok 무료 옵션 (Rate Limit) / Perplexity Pro
 
 ![bg right fit](./res/deepr_2x.gif)
@@ -51,9 +51,16 @@ headingDivider: 2
 
 ## Advanced </br>- Deeper Research
 
+<style scoped>
+p {
+   font-size:16px;
+}
+</style>
+
 - Deep Research의 결과가 만족스럽지 않을 경우
 - Prompt 증강 기법을 활용
   - Research Assistant를 위한 Guide 생성
+    > 트럼프 관세 정책이 Global 경제에 미칠 영향이라는 주제로 심층 연구를 Research Firm에 의뢰하려고 합니다. 심도있고 포괄적인 연구가되도록 상세한 요청서를 작성해주세요
   - 생성된 Guide 활용 Deep Research 수행
 
 ![bg right fit](./res/promt_aug_comp.png)
@@ -68,6 +75,7 @@ headingDivider: 2
 - 다수의 파일을 AI에 Feed/재사용 용이
 - 다양한 서식 지원
   - Markdown / Mermaid / Marp ...
+- MCP를 통한 다양한 툴 활용
 - 반복 업무의 Program화 `AI 코딩 활용`
 
 ![bg right fit](./res/vibe_working.png)
@@ -109,6 +117,7 @@ headingDivider: 2
 ### Programming => 자연어
 
 - 시각의 전환 필요
+
   > 나는 못해. 개발자들이나 하는거야..
 
 - 창의성과 탐색의 노력
@@ -117,9 +126,12 @@ headingDivider: 2
 ### 한계
 
 - Hallucination
+
   > 최종 확인에서 사람의 역할 중요
 
-- 금일 세션 자료 모두 Github에 공개
+- 금일 세션 자료 모두 [Github에 공개](https://github.com/fritzprix/ai_tool_demo)
+
+## Thank You
 
 ## Appendix - Augmented Query
 
@@ -221,3 +233,11 @@ headingDivider: 2
 - 경영진을 위한 요약 및 기술적 부록 모두 포함
 
 이 연구를 통해 트럼프 관세 정책의 글로벌 경제 영향에 대한 심층적 이해를 바탕으로, 기업과 정부의 전략적 의사결정을 지원하고자 합니다.
+```
+
+## Appendix - Claude Artifact 활용 예시
+
+- [프롬프트 시나리오별 가격 시뮬레이션](https://claude.site/artifacts/215fdcb0-ba18-4c74-9676-a063443aa046)
+- [DCF Valuation 계산기](https://claude.site/artifacts/de784749-bc58-4bd9-9df9-e229fdac6372)
+- [MCP 시각화](https://claude.site/artifacts/baaf6080-bcf2-428c-8598-0cef913156dc)
+- [Tetris 게임](https://claude.site/artifacts/d1c53afa-b634-4518-9e98-ea99871a6dea)
