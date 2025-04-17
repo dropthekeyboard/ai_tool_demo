@@ -1,0 +1,91 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="10" y="10" width="780" height="380" rx="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">AI Agent Service Model - Growth Cycle</text>
+  
+  <!-- Center AI Agent Node -->
+  <circle cx="400" cy="200" r="40" fill="#f3e8ff"/>
+  <g transform="translate(400, 190)">
+    <path d="M10 1.5l2.39 5.05 5.35 0.78-3.87 3.77 0.91 5.4L10 13.77l-5.29 2.78 0.91-5.4-3.87-3.77 5.35-0.78L10 1.5z" stroke="#9333ea" stroke-width="2" fill="none"/>
+  </g>
+  <text x="400" y="200" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#9333ea">AI</text>
+  <text x="400" y="218" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">AI Agent</text>
+  
+  <!-- Cycle circle -->
+  <circle cx="400" cy="200" r="120" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-dasharray="8 4"/>
+  
+  <!-- User Growth Node (top left) -->
+  <rect x="200" y="80" width="120" height="60" rx="8" fill="#dbeafe"/>
+  <g transform="translate(230, 100)">
+    <path d="M0 8C0 3.582 3.582 0 8 0H16C20.418 0 24 3.582 24 8C24 12.418 20.418 16 16 16H8C3.582 16 0 12.418 0 8Z" fill="#3b82f6"/>
+    <path d="M16 20C16 15.582 19.582 12 24 12H32C36.418 12 40 15.582 40 20C40 24.418 36.418 28 32 28H24C19.582 28 16 24.418 16 20Z" fill="#3b82f6"/>
+  </g>
+  <text x="260" y="110" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">사용자 증가</text>
+  <text x="260" y="128" font-family="Arial" font-size="12" text-anchor="middle">User Growth</text>
+  
+  <!-- Cloud Negotiation Node (top right) -->
+  <rect x="480" y="80" width="120" height="60" rx="8" fill="#ccfbf1"/>
+  <g transform="translate(510, 110)">
+    <path d="M25 4.13c-4.07-2.75-9.23-3.03-13.6-0.78-6.08-5.55-15.49-4.8-20.66 1.5-3.35 4.09-4.06 7.83-3.75 11.05C-14.7 16.9-16 19.1-16 21.47c0 4.14 3.36 7.5 7.5 7.5H25c5.52 0 10-4.48 10-10s-4.48-10-10-10z" fill="none" stroke="#0d9488" stroke-width="2"/>
+  </g>
+  <text x="540" y="110" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">협상력 강화</text>
+  <text x="540" y="128" font-family="Arial" font-size="12" text-anchor="middle">Cloud Negotiation</text>
+  
+  <!-- Cost Advantage Node (bottom right) -->
+  <rect x="480" y="260" width="120" height="60" rx="8" fill="#dcfce7"/>
+  <g transform="translate(510, 290)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#22c55e" stroke-width="2"/>
+    <path d="M0 -6v12M-6 0h12" stroke="#22c55e" stroke-width="2"/>
+  </g>
+  <text x="540" y="290" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">비용 경쟁력</text>
+  <text x="540" y="308" font-family="Arial" font-size="12" text-anchor="middle">Cost Advantage</text>
+  
+  <!-- Price Competitiveness Node (bottom left) -->
+  <rect x="200" y="260" width="120" height="60" rx="8" fill="#ffedd5"/>
+  <g transform="translate(230, 290)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#f59e0b" stroke-width="2"/>
+    <path d="M0 -6v12M-6 0h12" stroke="#f59e0b" stroke-width="2"/>
+  </g>
+  <text x="260" y="290" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">가격 경쟁력</text>
+  <text x="260" y="308" font-family="Arial" font-size="12" text-anchor="middle">Price Competitiveness</text>
+  
+  <!-- Directional Arrows -->
+  <!-- Right Arrow (User Growth to Cloud Negotiation) -->
+  <g transform="translate(325, 110)">
+    <line x1="0" y1="0" x2="150" y2="0" stroke="#666" stroke-width="2"/>
+    <polygon points="150,0 140,-5 140,5" fill="#666"/>
+  </g>
+  
+  <!-- Down Arrow (Cloud Negotiation to Cost Advantage) -->
+  <g transform="translate(540, 145)">
+    <line x1="0" y1="0" x2="0" y2="110" stroke="#666" stroke-width="2"/>
+    <polygon points="0,110 -5,100 5,100" fill="#666"/>
+  </g>
+  
+  <!-- Left Arrow (Cost Advantage to Price Competitiveness) -->
+  <g transform="translate(475, 290)">
+    <line x1="0" y1="0" x2="-150" y2="0" stroke="#666" stroke-width="2"/>
+    <polygon points="-150,0 -140,-5 -140,5" fill="#666"/>
+  </g>
+  
+  <!-- Up Arrow (Price Competitiveness to User Growth) -->
+  <g transform="translate(260, 255)">
+    <line x1="0" y1="0" x2="0" y2="-110" stroke="#666" stroke-width="2"/>
+    <polygon points="0,-110 -5,-100 5,-100" fill="#666"/>
+  </g>
+  
+  <!-- Description -->
+  <text x="400" y="360" font-family="Arial" font-size="14" text-anchor="middle">사용자 증가로 인한 클라우드 협상력 강화 → 비용 경쟁력 확보 → 가격 경쟁력 향상 → 사용자 증가의 선순환</text>
+  
+  <!-- Legend -->
+  <circle cx="170" cy="380" r="5" fill="#3b82f6"/>
+  <text x="180" y="385" font-family="Arial" font-size="12">사용자 (Users)</text>
+  <circle cx="300" cy="380" r="5" fill="#9333ea"/>
+  <text x="310" y="385" font-family="Arial" font-size="12">AI Agent (Platform)</text>
+  <circle cx="470" cy="380" r="5" fill="#22c55e"/>
+  <text x="480" y="385" font-family="Arial" font-size="12">외부 서비스 (3rd Party)</text>
+  <circle cx="640" cy="380" r="5" fill="#f59e0b"/>
+  <text x="650" y="385" font-family="Arial" font-size="12">수익 흐름 (Revenue)</text>
+</svg>
