@@ -52,7 +52,7 @@ headingDivider: 2
   - Automation을 등록, 주기적으로 해당 Task를 수행, 결과를 메일 등으로..
 - 한계
   - Captcha
-  - 보안 우려 (세션 정보 공유 시)
+  - 세션 정보 공유 등
 
 ## Proxy (2)
 
@@ -80,16 +80,51 @@ headingDivider: 2
 
 - Claude / Gemini / ChatGPT 등 유사한 기능
 - 코드 (Javascript)를 실행 시킬 수 있는 환경
-- 간단한 웹 게임이나 시각화 등이 가능
+- 간단한 웹 게임이나 시각화 / 시뮬레이션 등 가능
 
-## Canvas (Artifact) - 활용
+## Canvas (Artifact) - PPT 활용 하기(1)
+
+- 장표에 표현될 컨셉 텍스트로 작성
+- Claude 프롬프트
+  
+  ```text
+  위 내용을 React 이용하여 시각화 해줘
+  ```
+
+![bg right fit](res/claude_slide_2_2x.gif)
+
+## Canvas (Artifact) - PPT 활용 하기(2)
+
+- 중간 결과물 [링크](https://claude.site/artifacts/cf5df262-91d8-41cb-89c8-de096064aa5b)
+- 스크린샷 캡쳐로 이미지를 그대로 사용 가능
+
+![bg left fit](res/vis_result.png)
+
+## Canvas (Artifact) - PPT 활용 하기(3)
+
+- 이미지를 붙여 넣는 것을 원치 않는 경우
+- SVG로 변환
+  
+  ```text
+  위 도식화를 SVG로 변환
+  ```
+
+![bg right fit](res/claude_slide_3_2x.gif)
+
+## Canvas (Artifact) - PPT 활용 하기(4)
+
+- SVG결과를 다운로드 후 PPT에 삽입
+- 그룹 해제 후 편집
+
+![bg right fit](res/claude_slide_4_2x.gif)
+
+## Canvas (Artifact) - 기타
 
 - [복잡한 개념 이해 (애니메이션)](https://claude.site/artifacts/b2cd28f2-8520-457f-9641-5b032f3d6d7e)
-- PPT 보고서 시각화 (혹은 장표 대체)
-- 시각화 > React 생성 > 검토 및 수정 > SVG로 추출
-- `Publish` 활용 / Draft 공동 리뷰
+- [토큰 비용 시뮬레이션](https://claude.site/artifacts/215fdcb0-ba18-4c74-9676-a063443aa046)
 
 ![bg right fit](./res/ring_attention_1x_noskip.gif)
+
 
 ## Deeper Research </br>- Query Augmentation (1)
 
