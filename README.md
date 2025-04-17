@@ -94,50 +94,72 @@ headingDivider: 2
   }
 </style>
 
-- 장표에 표현될 내용을 프롬프트로 준비
+- 장표에 표현될 내용을 [파일](./idea.md)로 준비
+  - 복잡한 시각화 Prompt
 
-  ```text
-    # AI Agent 서비스 기획
+    ```text
+    당신은 인포그래픽, 디자인 전문 컨설턴트 입니다. 임원분들께 발표할 자료를 만드는 과정입니다.
 
-  - 구독 기반의 서비스
-  - 다양한 서비스와 사용자를 연결
-  - 우선 서비스 설정에 대한 커미션 수익
-  - 사용자 대신 Agent는 서비스와 상호작용 
-    예약, 구매 같은 액션을 수행
+    첨부 파일을 분석해서, 시각화 자료로 만들 수 있는 요소들을 추출해 주세요.
 
-  ## 사업 확장
+    선형 그래프, 막대 그래프, 파이차트 등 가장 적절한 포맷을 추천해서 만들어주세요.
 
-  - 사용자 규모를 기반으로 Cloud 협상력을 강화 
-    -> 비용 경쟁력을 추가 확보 -> 가격 경쟁력을 향상 
-    -> 사용자 증가 -> ...
+    16:9 PPT용 슬라이드 디자인으로 만들어 주되, React 파일로 1차 생성해 주세요.
 
-  위 내용을 React 이용하여 시각화 해줘
+    이후 파워포인트에서 수정이 가능하도록 SVG 버전도 추출할 예정입니다. 참고 해 주세요.
 
-  ```
+    브랜드 컬러는 연보라, 보라, 블랙, 그레이, 화이트를 깔끔하게 사용하고, 폰트는 Noto Sans CJK KR 와같은 깨끗한 고딕체를 사용 해 주세요.
+
+    ‘전체적인 분위기는 모던하고 깨끗하게 만들어 주세요.
+
+    ‘불필요한 텍스트나 장식은 최소화해주세요.’
+
+    ‘슬라이드마다 차트, 그래프, 인포그래픽을 적절히 배치하고, 각 슬라이드에 숫자나 통계가 한눈에 들어오도록 간결하게 구성해 주세요.’
+
+    만약 오류가 뜨면, 그 오류를 자동 분석한 후, 자동 수정까지 해주세요.
+    ```
+  
+  - 간결한 시각화 Prompt
+
+    ```text
+    첨부 파일을 React를 활용하여 시각화 해주세요.
+    - 사용자, AI Agent, 3rd Party의 관계, 거래의 흐름
+    - 사용자 규모의 확장에 의한 선순환 개념과 기회 중심
+    ```
 
   - React : 요소들간의 보다 안정적인 layout을 보장
 
-![bg right fit](res/claude_slide_2_2x.gif)
+![bg right fit](res/artifact_demo_prompt_simple_2x.gif)
+
+## Canvas (Artifact) - PPT 활용 하기(1-1)
+
+- 결과 비교
+  - [복잡한 Prompt](https://claude.site/artifacts/88ee3c53-2811-4352-82a0-35b3bc5cfecf)
+  - [간결한 Prompt](https://claude.site/artifacts/fcd13af0-7f5f-49ee-a462-3818abefa211)
+
+- 시각화 결과물의 수정
+  - 해당 시각화 스크린샷
+  - Image Prompt와 함께 문제점 분석을 지시
+
+    ```text
+    시각화에 문제가 있습니다. 이미지를 정밀하게 살펴보고 원인을 차근차근 분석해주세요
+    ```
+
+- [최종 결과](https://claude.site/artifacts/f383c5c2-6448-4f81-84cf-7b3d534539ad)
+- React 결과물이 가장 완성도 높은 Visual (이미지 스샷 활용)
 
 ## Canvas (Artifact) - PPT 활용 하기(2)
 
-- 중간 결과물 [링크](https://claude.site/artifacts/cf5df262-91d8-41cb-89c8-de096064aa5b)
-- 스크린샷 캡쳐로 이미지 사용 or ..
-
-![bg left fit](res/vis_result.png)
-
-## Canvas (Artifact) - PPT 활용 하기(3)
-
-- 이미지를 붙여 넣는 것을 원치 않는 경우
-- SVG로 변환
-
-  ```text
-  프롬프트: 위 도식화를 SVG로 변환 해줘
+- 결과물의 레이아웃 등이 만족스럽지 않거나 PPT에 넣어 직접 수정을 원할 경우
+- SVG로 변환하기
+  
+  ```prompt
+  위 시각화를 각각 SVG로 만들어주세요.
   ```
 
-![bg right fit](res/claude_slide_3_2x.gif)
+![bg right fit](res/artifact_demo_comp_2_svg_2x.gif)
 
-## Canvas (Artifact) - PPT 활용 하기(4)
+## Canvas (Artifact) - PPT 활용 하기(3)
 
 - SVG결과를 다운로드 후 PPT에 삽입
 - 그룹 해제 후 편집
