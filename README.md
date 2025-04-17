@@ -304,7 +304,7 @@ p {
 
   > 최종 확인에서 사람의 역할 중요
 
-- 금일 세션 자료 모두 [Github에 공개](https://github.com/fritzprix/ai_tool_demo)
+- 금일 세션 자료 모두 [Github에 공개](https://github.com/dropthekeyboard/ai_tool_demo)
 
 ## Thank You
 
