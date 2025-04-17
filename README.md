@@ -9,11 +9,9 @@ headingDivider: 2
 
 > David Lee @ AI성장전략본부
 
-## |
-
-![bg fit](./res/disclaimer.jpg)
-
 ## Table of Content
+
+![bg right fit](./audience.png)
 
 - Basic
   - Deep Research
@@ -22,7 +20,7 @@ headingDivider: 2
 - Advanced
   - Canvas (Artifact)
   - Deeper Research
-- (선택) Cursor 활용
+- (선택) 보고서 Cursor 활용
 
 ## Deep Research (1)
 
@@ -31,36 +29,49 @@ headingDivider: 2
 
 ![bg right fit](./res/deepr_2x.gif)
 
-## Deep Research (2)
+## Deep Research (2) - 예시
 
 - "Trump 정부 관세 정책의 Global 경제 영향 심층 분석"에 대한 결과
+
   > Gemini-2.5 Pro / Grok /</br>o3-mini / Perplexity
+
+- 같은 주제에 상이한 결과
+  - Gemini가 가장 상세한 리포트
+  - Grok이 가장 간결
 
 ![bg right fit](https://mermaid.ink/img/pako:eNpVj01ugzAQha9izdogAzY_XnTTqhfoolJDFTnxFKwARo6RoFHuXgNt1c7Kb-abN343OFuNIGFezq1yPjqhV_VAQnnjOyQ1vFqnyaOdBk9OC3k2HdawE3OkZnMlhwZ7M5hjehRxrylpnL0cNeKI7r_elM2ilY5a07RbI2Bjh7PxS5Dvu_OyO_89XgNhJIoeSMUY26mTcuRQiqqkpEpTSrjIKUlZVlCScM7fgUKPrldGh4C3dacG32IfAsjw1Mpd1ij3wKnJ25dlOIP0bkIKzk5NC_JDddegplErj09GNU71v93GrcbfPA4a3fZRkElGYVTDm7X9zzxIkDeYw1CUcZakPBcsz1mVsJLCApKXMc8KXpSMZaLKi-pO4XMzYHFZiJCZpTkrCpaK5P4FD-SFDA?type=png)
 
 ## 범용 Web AI Agent
 
-- OpenAI의 Operator가 대표적 (Plus 구독)
-- 무료 대안 Convergence.ai에서 Proxy
-  - Operator와 유사
-  - Memory 기능을 통해 Agent가 실패하는 지점에서 사용자가 지도 가능(이를 기억)
-  - Orchestrator와 Proxy 다중 Agent 구조
+- OpenAI의 Operator가 대표적 (Plus 구독 필요)
+- Manus AI 현재 Closed Beta
+- Convergence.ai에서 Proxy (무료 ~ $20/월)
+  - Memory 지원, Agent가 실패하는 지점에서 사용자가 시연을 통해 지도 가능
+  - Orchestrator(대화형 Agent)와 Proxy (특정 역할 수행) 다중 Agent 구조
 
 ## Proxy (1)
+
+<style scoped>
+ul {
+  font-size: 28px;
+}
+</style>
 
 ![bg right fit](./res/proxy_2x.gif)
 
 - 강점
-  - 무료로 사용할 수 있으며 비용이 월$20로 저렴
+  - `상대적`으로 저렴하고 누구나 접근 가능
   - Template을 통해 작업을 재사용 가능한 형태로 만들고 공유 가능
-  - Automation을 등록, 주기적으로 해당 Task를 수행, 결과를 메일 등으로..
+  - Automation 지원, 주기적으로 해당 Task를 수행, 결과 전송 </br>(메일, 메신저)
 - 한계
+  - 느린 속도
   - Captcha
-  - 세션 정보 공유 등
 
-## Proxy (2)
+## Proxy (2)</br>- Automation 활용
 
-- 활용 예시
+- 무료 계정 1개 / 유료 20개 까지
+
+- 예시
   - 스타트업 서치
   - 신규 트렌딩 기술 및 논문 서치
   - ...
@@ -83,7 +94,7 @@ headingDivider: 2
 ## Canvas (Artifact)
 
 - Claude / Gemini / ChatGPT 등 유사한 기능
-- 코드 (Javascript)를 실행 시킬 수 있는 환경
+- 코드 (Javascript)를 실행 시킬 수 있는 환경 (React / WebGL ..)
 - 간단한 웹 게임이나 시각화 / 시뮬레이션 등 가능
 
 ## Canvas (Artifact) - PPT 활용 하기(1)
@@ -94,37 +105,68 @@ headingDivider: 2
   }
 </style>
 
-- 장표에 표현될 내용을 [파일](./idea.md)로 준비
-  - 복잡한 시각화 Prompt
+- 시각화 작업 [파일](./demo/us_tariff_augmented/grok_deeper.md) 준비
+
+- 시각화 Prompt
 
     ```text
-    당신은 인포그래픽, 디자인 전문 컨설턴트 입니다. 임원분들께 발표할 자료를 만드는 과정입니다.
+    # 시각화 제작 요청
 
-    첨부 파일을 분석해서, 시각화 자료로 만들 수 있는 요소들을 추출해 주세요.
+    1. **데이터 분석 및 시각화 (데이터 유형 적응성):**
 
-    선형 그래프, 막대 그래프, 파이차트 등 가장 적절한 포맷을 추천해서 만들어주세요.
+    - 첨부의 보고서 중 시각화 가능한 요소를 분석하여 추출합니다.
+    - 추출된 정보들의 Scale 및 속성에 따라 이상적인 시각화 방식(예: 막대 그래프, 선 그래프, 파이 차트, 분산형 차트 등)을 활용하여 데이터를 표현합니다.
+    - 불필요한 요소는 최대한 제거하고 직관적으로 이해될 수 있도록 합니다.
 
-    16:9 PPT용 슬라이드 디자인으로 만들어 주되, React 파일로 1차 생성해 주세요.
+    1. **디자인 및 품질:**
 
-    이후 파워포인트에서 수정이 가능하도록 SVG 버전도 추출할 예정입니다. 참고 해 주세요.
+    - 내부 임원 보고에 적합하도록 깔끔하고 전문적인 디자인을 적용해야 합니다.
+    - 표기되는 데이터, 수치, 내용에 오류가 없어야 합니다.
 
-    브랜드 컬러는 연보라, 보라, 블랙, 그레이, 화이트를 깔끔하게 사용하고, 폰트는 Noto Sans CJK KR 와같은 깨끗한 고딕체를 사용 해 주세요.
+    1. **기술 및 레이아웃:**
 
-    ‘전체적인 분위기는 모던하고 깨끗하게 만들어 주세요.
+    - 슬라이드 비율: 개별 슬라이드는 16:9 가로세로 비율로 제작되어야 합니다.
+    - React 사용합니다. 코드에 오류가 없도록 작성하며 오류가 있을 경우 수정
+    - 향후 SVG로 추출 가능성이 있음을 참고하세요.
 
-    ‘불필요한 텍스트나 장식은 최소화해주세요.’
-
-    ‘슬라이드마다 차트, 그래프, 인포그래픽을 적절히 배치하고, 각 슬라이드에 숫자나 통계가 한눈에 들어오도록 간결하게 구성해 주세요.’
-
-    만약 오류가 뜨면, 그 오류를 자동 분석한 후, 자동 수정까지 해주세요.
     ```
-  
-  - 간결한 시각화 Prompt
+
+  - React : 요소들간의 보다 안정적인 layout을 보장
+
+![bg right fit](./blank.png)
+
+## Canvas (Artifact) - PPT 활용 하기(1)
+
+<style scoped>
+  ul {
+    font-size:24px;
+  }
+</style>
+
+- 시각화 작업 [파일](./demo/us_tariff_augmented/grok_deeper.md) 준비
+
+- 시각화 Prompt
 
     ```text
-    첨부 파일을 React를 활용하여 시각화 해주세요.
-    - 사용자, AI Agent, 3rd Party의 관계, 거래의 흐름
-    - 사용자 규모의 확장에 의한 선순환 개념과 기회 중심
+    # 시각화 제작 요청
+
+    1. **데이터 분석 및 시각화 (데이터 유형 적응성):**
+
+    - 첨부의 보고서 중 시각화 가능한 요소를 분석하여 추출합니다.
+    - 추출된 정보들의 Scale,단위 및 속성에 따라 이상적인 시각화 방식을 선택하여 데이터를 표현합니다.
+    - 불필요하거나 시각화에 부적합한 요소는 가급적 제거하고 직관적으로 이해될 수 있도록 합니다.
+
+    1. **디자인 및 품질:**
+
+    - 내부 임원 보고에 적합하도록 깔끔하고 전문적인 디자인을 적용해야 합니다.
+    - 표기되는 데이터, 수치, 내용에 오류가 없어야 합니다.
+
+    1. **기술 및 레이아웃:**
+
+    - 슬라이드 비율: 개별 슬라이드는 16:9 가로세로 비율로 제작되어야 합니다.
+    - React 사용합니다. 코드에 오류가 없도록 차근차근 코드를 작성합니다.
+    - 향후 SVG로 추출 가능성이 있음을 참고하세요.
+
     ```
 
   - React : 요소들간의 보다 안정적인 layout을 보장
@@ -134,10 +176,11 @@ headingDivider: 2
 ## Canvas (Artifact) - PPT 활용 하기(1-1)
 
 - 결과 비교
-  - [복잡한 Prompt](https://claude.site/artifacts/88ee3c53-2811-4352-82a0-35b3bc5cfecf)
-  - [간결한 Prompt](https://claude.site/artifacts/fcd13af0-7f5f-49ee-a462-3818abefa211)
+
+  - [React 결과물](https://claude.site/artifacts/2516439f-e06a-48ad-aebf-cdf522840d00)
 
 - 시각화 결과물의 수정
+
   - 해당 시각화 스크린샷
   - Image Prompt와 함께 문제점 분석을 지시
 
@@ -145,24 +188,25 @@ headingDivider: 2
     시각화에 문제가 있습니다. 이미지를 정밀하게 살펴보고 원인을 차근차근 분석해주세요
     ```
 
-- [최종 결과](https://claude.site/artifacts/f383c5c2-6448-4f81-84cf-7b3d534539ad)
-- React 결과물이 가장 완성도 높은 Visual (이미지 스샷 활용)
+- 이미지 스샷 vs SVG 추출
 
 ## Canvas (Artifact) - PPT 활용 하기(2)
 
 - 결과물의 레이아웃 등이 만족스럽지 않거나 PPT에 넣어 직접 수정을 원할 경우
 - SVG로 변환하기
-  
+
   ```prompt
   위 시각화를 각각 SVG로 만들어주세요.
   ```
 
-![bg right fit](res/artifact_demo_comp_2_svg_2x.gif)
+- [SVG 결과물](https://claude.site/artifacts/ae55aee0-80d0-4cfb-93e1-8c25bd837643)
+
+![bg right fit](res/claude_slide_3_2x.gif)
 
 ## Canvas (Artifact) - PPT 활용 하기(3)
 
-- SVG결과를 다운로드 후 PPT에 삽입
-- 그룹 해제 후 편집
+- SVG 다운로드 PPT에 삽입
+- 그룹 해제 후 편집 가능
 
 ![bg right fit](res/claude_slide_4_2x.gif)
 
@@ -181,11 +225,13 @@ p {
 }
 </style>
 
-- Deep Research의 결과가 만족스럽지 않을 경우
+- Deep Research, 알아서 똑바로 못해?
 - Prompt 증강 기법을 활용
   - AI를 활용 Research Assistant를 위한 Guide 생성
     > 트럼프 관세 정책이 Global 경제에 미칠 영향이라는 주제로 심층 연구를 Research Firm에 의뢰하려고 합니다. 심도있고 포괄적인 연구가되도록 상세한 요청서를 작성해주세요
   - 증강된 Prompt 활용 Deep Research 수행
+
+![bg right fit](image.png)
 
 ## Deeper Research </br>- Query Augmentation (2)
 
@@ -293,14 +339,13 @@ p {
 
 ## Cursor Demo</br>- Trump 관세 영향 보고서 평가하기 (1)
 
-- 평가 Guide를 생성(Claude) 후 Markdown으로 저장
+- 아래 Prompt로 [평가 Guide](./demo/eval/eval_guide.md)를 생성
 
   ```markdown
   연구 보고서의 품질을 평가하기 위한 Guide 제안
   ```
 
-- 해당 Guide를 입력으로 평가 Template을 생성 (Cursor)
-- 리포트에 대한 상세 평가 작성 (Cursor)
+- 해당 Guide를 입력으로 평가 [Template](./demo/eval/eval_template.md)을 생성 (Cursor)
 
 ![bg right fit](./res/eval_template.png)
 
@@ -312,7 +357,7 @@ p {
 
 ## Cursor Demo</br>- 보고서 평가하기 (3)
 
-- Feel the `Vibe`
+- Agent의 임무 실행 감상
 - 하지만.. 한번에 성공하지 않을 수 있음, 재시도의 용이성이 핵심
 
 ![bg right fit](./res/cursor_vibe_1x_noskip.gif)
@@ -336,9 +381,18 @@ p {
 
 ## Wrap-Up
 
+<style scoped>
+ul {
+  font-size: 28px;
+}
+p {
+  font-size: 26px;
+}
+</style>
+
 - 시각의 전환 필요 (Programming => 자연어)
 
-  > 나는 못해. 개발자들이나 하는거야..
+  > 나는 못해. 개발자나 쓰는거야..
 
 - 창의적 게으름
 
