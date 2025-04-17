@@ -9,6 +9,10 @@ headingDivider: 2
 
 > David Lee @ AI성장전략본부
 
+## |
+
+![bg fit](./res/disclaimer.jpg)
+
 ## Table of Content
 
 - Basic
@@ -84,19 +88,41 @@ headingDivider: 2
 
 ## Canvas (Artifact) - PPT 활용 하기(1)
 
-- 장표에 표현될 컨셉 텍스트로 작성
-- Claude 프롬프트
-  
+<style scoped>
+  ul {
+    font-size:24px;
+  }
+</style>
+
+- 장표에 표현될 내용을 프롬프트로 준비
+
   ```text
+    # AI Agent 서비스 기획
+
+  - 구독 기반의 서비스
+  - 다양한 서비스와 사용자를 연결
+  - 우선 서비스 설정에 대한 커미션 수익
+  - 사용자 대신 Agent는 서비스와 상호작용 
+    예약, 구매 같은 액션을 수행
+
+  ## 사업 확장
+
+  - 사용자 규모를 기반으로 Cloud 협상력을 강화 
+    -> 비용 경쟁력을 추가 확보 -> 가격 경쟁력을 향상 
+    -> 사용자 증가 -> ...
+
   위 내용을 React 이용하여 시각화 해줘
+
   ```
+
+  - React : 요소들간의 보다 안정적인 layout을 보장
 
 ![bg right fit](res/claude_slide_2_2x.gif)
 
 ## Canvas (Artifact) - PPT 활용 하기(2)
 
 - 중간 결과물 [링크](https://claude.site/artifacts/cf5df262-91d8-41cb-89c8-de096064aa5b)
-- 스크린샷 캡쳐로 이미지를 그대로 사용 가능
+- 스크린샷 캡쳐로 이미지 사용 or ..
 
 ![bg left fit](res/vis_result.png)
 
@@ -104,9 +130,9 @@ headingDivider: 2
 
 - 이미지를 붙여 넣는 것을 원치 않는 경우
 - SVG로 변환
-  
+
   ```text
-  위 도식화를 SVG로 변환
+  프롬프트: 위 도식화를 SVG로 변환 해줘
   ```
 
 ![bg right fit](res/claude_slide_3_2x.gif)
@@ -124,7 +150,6 @@ headingDivider: 2
 - [토큰 비용 시뮬레이션](https://claude.site/artifacts/215fdcb0-ba18-4c74-9676-a063443aa046)
 
 ![bg right fit](./res/ring_attention_1x_noskip.gif)
-
 
 ## Deeper Research </br>- Query Augmentation (1)
 
@@ -289,22 +314,20 @@ p {
 
 ## Wrap-Up
 
-### Programming => 자연어
-
-- 시각의 전환 필요
+- 시각의 전환 필요 (Programming => 자연어)
 
   > 나는 못해. 개발자들이나 하는거야..
 
 - 창의적 게으름
+
   > 새로운 AI 적용 가능성을 발견
 
-### 한계
-
 - Hallucination
-
   > 최종 확인에서 사람의 역할 중요
 
-- 금일 세션 자료 모두 [Github에 공개](https://github.com/dropthekeyboard/ai_tool_demo)
+> 금일 세션 자료 모두 [Github에 공개](https://github.com/dropthekeyboard/ai_tool_demo)
+
+![bg right fit](res/andrej_english.png)
 
 ## Thank You
 
