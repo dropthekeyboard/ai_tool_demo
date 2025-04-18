@@ -26,6 +26,7 @@ headingDivider: 2
 
 - Web 검색을 활용 정보의 Retrieval과 자율적 계획과 추론에 따라 주제에 대한 연구를 수행
 - Grok 무료 옵션 (Rate Limit) / Perplexity Pro
+- [Sample](./demo/us_tariff/o3-mini-high.md)
 
 ![bg right fit](./res/deepr_2x.gif)
 
@@ -64,8 +65,8 @@ ul {
   - Template을 통해 작업을 재사용 가능한 형태로 만들고 공유 가능
   - Automation 지원, 주기적으로 해당 Task를 수행, 결과 전송 </br>(메일, 메신저)
 - 한계
+  - Captcha (Bot Filter)
   - 느린 속도
-  - Captcha
 
 ## Proxy (2)</br>- Automation 활용
 
@@ -115,8 +116,8 @@ ul {
   1. **데이터 분석 및 시각화 (데이터 유형 적응성):**
 
   - 첨부의 보고서 중 시각화 가능한 요소를 분석하여 추출합니다.
-  - 추출된 정보들의 Scale 및 속성에 따라 이상적인 시각화 방식(예: 막대 그래프, 선 그래프, 파이 차트, 분산형 차트 등)을 활용하여 데이터를 표현합니다.
-  - 불필요한 요소는 최대한 제거하고 직관적으로 이해될 수 있도록 합니다.
+  - 추출된 정보들의 Scale,단위 및 속성에 따라 이상적인 시각화 방식을 선택하여 데이터를 표현합니다.
+  - 불필요하거나 시각화에 부적합한 요소는 가급적 제거하고 직관적으로 이해될 수 있도록 합니다.
 
   1. **디자인 및 품질:**
 
@@ -126,7 +127,7 @@ ul {
   1. **기술 및 레이아웃:**
 
   - 슬라이드 비율: 개별 슬라이드는 16:9 가로세로 비율로 제작되어야 합니다.
-  - React 사용합니다. 코드에 오류가 없도록 작성하며 오류가 있을 경우 수정
+  - React 사용합니다. 코드에 오류가 없도록 차근차근 코드를 작성합니다.
   - 향후 SVG로 추출 가능성이 있음을 참고하세요.
 
   ```
@@ -199,7 +200,8 @@ ul {
   위 시각화를 각각 SVG로 만들어주세요.
   ```
 
-- [SVG 결과물](https://claude.site/artifacts/ae55aee0-80d0-4cfb-93e1-8c25bd837643)
+- [SVG 결과물 - 1](https://claude.site/artifacts/ae55aee0-80d0-4cfb-93e1-8c25bd837643)
+- [SVG 결과물 - 2](https://claude.site/artifacts/529adc1a-a54e-4b63-879c-c5a3cf57b5eb)
 
 ![bg right fit](res/claude_slide_3_2x.gif)
 
@@ -227,7 +229,7 @@ p {
 
 - Deep Research가 포인트를 제대로 잡지 못할 때
 - Prompt 증강 기법을 활용
-  - AI를 활용 Research Assistant를 위한 Guide 생성
+  - AI를 활용 Research Firm의뢰를 위한 Guide 생성
     > 트럼프 관세 정책이 Global 경제에 미칠 영향이라는 주제로 심층 연구를 Research Firm에 의뢰하려고 합니다. 심도있고 포괄적인 연구가되도록 상세한 요청서를 작성해주세요
   - 증강된 Prompt 활용 Deep Research 수행
 
@@ -240,7 +242,8 @@ p {
 
 ## 연구 배경 및 목적
 
-도널드 트럼프 대통령의 재선으로 인해 새로운 관세 정책이 예상되는 상황에서, 이러한 정책이 글로벌 경제와 시장에 미칠 잠재적 영향에 대한 포괄적인 이해가 필요합니다. 본 연구는 트럼프 행정부의 관세 정책을 분석하고, 이에 대한 글로벌 경제의 반응과 장단기적 영향을 평가하는 것을 목적으로 합니다.
+도널드 트럼프 대통령의 재선으로 인해 새로운 관세 정책이 예상되는 상황에서, 이러한 정책이 글로벌 경제와 시장에 미칠 잠재적 영향에 대한 포괄적인 이해가 필요합니다. 
+본 연구는 트럼프 행정부의 관세 정책을 분석하고, 이에 대한 글로벌 경제의 반응과 장단기적 영향을 평가하는 것을 목적으로 합니다.
 
 ## 연구 범위
 
@@ -321,7 +324,7 @@ p {
 ### Why
 
 - 다수의 파일을 AI에 Feed/재사용 용이
-- Markdown의 다양한 서식 지원
+- 다양한 서식 지원
   - Markdown / Mermaid / Marp ...
 - MCP를 통한 다양한 툴 활용
 - 반복 업무의 Program화 `AI 코딩 활용` / Template화
@@ -330,10 +333,10 @@ p {
 
 ## Markdown
 
-- 간략한 서식을 지원하는 마크업
+- 간략한 서식을 지원
 - LLM 학습 시 코드 데이터 중 많은 부분 차지
 - 따라서 AI가 잘 이해하고 (구조)
-- Prompting 활용하기 좋음
+- Prompting 활용하기 용이
 
 ![bg fit right](res/markdown_example.png)
 
@@ -357,7 +360,7 @@ p {
 
 ## Cursor Demo</br>- 보고서 평가하기 (3)
 
-- Agent의 임무 실행 감상
+- Agent의 임무 실행 지켜보기
 - 하지만.. 한번에 성공하지 않을 수 있음, 재시도의 용이성이 핵심
 
 ![bg right fit](./res/cursor_vibe_1x_noskip.gif)
